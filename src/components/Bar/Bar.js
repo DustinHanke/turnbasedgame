@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import styles from './styles.module.css';
 
 export const Bar = ({label, value, maxValue}) => { 

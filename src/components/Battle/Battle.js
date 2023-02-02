@@ -29,6 +29,7 @@ return (
     <div className={styles.gameImages}>
         <div className={styles.playerSprite}>
         <img 
+        alt='Fashneb'
          src={playerStats.img}
          
          >
@@ -38,6 +39,7 @@ return (
 
         <div className={styles.opponentSprite}>
         <img 
+        alt='Dandexyl'
          src={opponentStats.img}>
         </img>
 

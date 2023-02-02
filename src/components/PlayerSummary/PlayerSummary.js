@@ -3,8 +3,8 @@ import styles from './styles.module.css';
 import {Bar} from '../';
 import {playerStats} from '../../shared/characters';
 
-const red = '#821200';
-const blue = '#1953cb';
+const red = 'lightgrey';
+const blue = '#A2C8EB';
 
 export const PlayerSummary = ({ main = false, name, level, health, maxHealth }) => { 
 return ( 
@@ -12,12 +12,12 @@ return (
 className={styles.main}>
     
 <div className={styles.info}>
-    <div className={styles.name}>{playerStats.name}</div>
+    <div className={styles.name}>{name}</div>
     <div className={styles.level}>LVL: {level}</div>
 </div>
 
 <div className={styles.health}>
-    <Bar label="HP" value={health} maxHealth={maxHealth} />
+    <Bar label="HP" value={health} maxValue={maxHealth} />
 </div>
 </div>
 );

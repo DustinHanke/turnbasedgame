@@ -1,8 +1,8 @@
 export const playerStats = {
     level: 44,
     maxHealth: 177,
-    name: 'Charactername',
-    img: '/assets/fashneb.png',
+    name: 'Fashneb',
+    img: '/assets/fashneb.gif',
     magic: 32,
     attack: 50,
     defense: 30,
@@ -10,11 +10,10 @@ export const playerStats = {
 };
 
 export const opponentStats = {
-    level: 44,
+    level: 45,
     maxHealth: 188,
-    name: 'Charactername',
-    img: '/assets/dandexyl.png',
-
+    name: 'Dandexyl',
+    img: '/assets/dandexyl.gif',
     magic: 50,
     attack: 32,
     defense: 20,

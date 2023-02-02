@@ -1,22 +1,12 @@
 import {useState} from 'react';
 import styles from './styles.module.css';
-import {PlayerSummary} from '../';
 
-export const BattleMenu = () => { 
+export const BattleMenu = ({onAttack, onMagic, onHeal}) => { 
 return ( 
 <div className={styles.main}>
-    <div className={styles.opponent}>
-        <div className={styles.summary}>
-        <PlayerSummary />
-        </div>
-    </div>
-
-    <div className={styles.user}>
-        <div className={styles.summary}>
-        <PlayerSummary main />
-        </div>
-    </div>
-
+    <div onClick={onAttack} className={styles.option}>Attack</div>
+    <div onClick={onMagic} className={styles.option}>Special</div>
+    <div onClick={onHeal} className={styles.option}>Heal</div>
 </div>
 );
 };

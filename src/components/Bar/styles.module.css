@@ -1,8 +1,30 @@
 .main{
 display:flex;
 border-radius: 25px;
-gap: 5px;
+margin: 5px;
 padding: 5px;
 background-color:white;
 align-items:center;
+}
+
+.value{
+    background-color:#7fb800 ;
+    height:100%;
+    transition:  0.35s;
+}
+
+.max{
+    background-color:grey;
+    height: 15px;
+    overflow:hidden;
+    box-sizing:border-box;
+    flex:1;
+    border-radius:5px;
+    
+}
+
+.label{
+    color:black;
+    font-weight: bold;
+    margin-right:5px;
 }

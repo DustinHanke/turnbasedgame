@@ -10,7 +10,7 @@ export const Battle = () => {
     const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
 
 return ( 
-<div className={styles.main}>
+<>
     <div className={styles.opponent}>
         <div className={styles.summary}>
         <PlayerSummary 
@@ -39,7 +39,7 @@ return (
 
         <div className={styles.opponentSprite}>
         <img 
-        alt='Dandexyl'
+        alt='Fashneb'
          src={opponentStats.img}>
         </img>
 
@@ -59,8 +59,7 @@ return (
         maxHealth={playerStats.maxHealth}
         />
         </div>
-    </div>
-
+        <div className={styles.hud}>
     <div className={styles.hudChild}>
 <BattleMenu
     onAttack={() => console.log('Attack!')}
@@ -69,7 +68,10 @@ return (
 
     />
     </div>
+    </div>
+    </div>
 
-</div>
+
+</>
 );
 };

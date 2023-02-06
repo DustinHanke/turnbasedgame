@@ -1,20 +1,39 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import styles from './styles.module.css';
-import {BattleMenu, PlayerSummary} from '..';
-import { opponentStats, playerStats } from '../../shared/characters';
+import {BattleAnnouncer, BattleMenu, PlayerSummary} from '..';
+import { opponentStats, playerStats, wait } from '../../shared/';
+import { useAIOpponent, useBattleSequence } from '../../hooks';
 
 
 export const Battle = () => { 
+    const [sequence, setSequence] = useState({});
 
-    const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
-    const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
+    const {
+        turn,
+        inSequence,
+        playerHealth,
+        opponentHealth,
+        playerAnimation,
+        opponentAnimation,
+        announcerMessage,
+    } = useBattleSequence(sequence);
+
+    const aiChoice = useAIOpponent(turn);
+
+    useEffect(() => {
+        if (aiChoice && turn === 1 && !inSequence) {
+            setSequence({turn, mode: aiChoice});
+        }
+    }, [turn, aiChoice, inSequence]);
+
+    
 
 return ( 
 <>
     <div className={styles.opponent}>
         <div className={styles.summary}>
         <PlayerSummary 
-                health={opponentStats.health} 
+                health={opponentHealth} 
                 name={opponentStats.name}
                 level={opponentStats.level}
                 maxHealth={opponentStats.maxHealth}
@@ -31,17 +50,18 @@ return (
         <img 
         alt='Fashneb'
          src={playerStats.img}
+         className={styles[playerAnimation]}
          
-         >
-        </img>
+         />
 
         </div>
 
         <div className={styles.opponentSprite}>
         <img 
-        alt='Fashneb'
-         src={opponentStats.img}>
-        </img>
+        alt={opponentStats.name}
+         src={opponentStats.img}
+                     className={styles[opponentAnimation]}
+                     />
 
         </div>
     </div>
@@ -60,11 +80,20 @@ return (
         />
         </div>
         <div className={styles.hud}>
+
+        <div className={styles.hudChild}>
+            <BattleAnnouncer
+            message={
+                announcerMessage || `What will ${playerStats.name} do?`
+            }
+            />
+             </div>
+
     <div className={styles.hudChild}>
 <BattleMenu
-    onAttack={() => console.log('Attack!')}
-    onHeal={() => console.log('Heal!')}
-    onMagic={() => console.log('Magic!')}
+    onAttack={() => setSequence({turn, mode: 'attack'})}
+    onHeal={() => setSequence({turn, mode: 'magic'})}
+    onMagic={() => setSequence({turn, mode: 'heal'})}
 
     />
     </div>

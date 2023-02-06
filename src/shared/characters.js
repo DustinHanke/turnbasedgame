@@ -3,8 +3,8 @@ export const playerStats = {
     maxHealth: 177,
     name: 'Fashneb',
     img: '/assets/fashneb.gif',
-    magic: 32,
-    attack: 50,
+    magic: 88,
+    attack: 13,
     defense: 30,
     magicDefense: 30,
 };
@@ -14,8 +14,8 @@ export const opponentStats = {
     maxHealth: 188,
     name: 'Dandexyl',
     img: '/assets/dandexyl.gif',
-    magic: 50,
-    attack: 32,
+    magic: 13,
+    attack: 50,
     defense: 20,
     magicDefense: 48,
 };
